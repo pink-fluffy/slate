@@ -9,6 +9,8 @@ toc_footers:
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
+  - category
+  - brand
   - errors
 
 search: true
@@ -180,5 +182,118 @@ This endpoint verifies the entered credentials and issues an access token to aut
 | refreshToken | `null`                                   |
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Remember — a happy unicorn is an authenticated unicorn!
 </aside>
+
+# Products
+
+## Add Product
+
+```shell
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data  $body \
+  "http://api.unicorn.com/product/add"
+```
+
+```json
+  body = {
+    "name": "Fresh Milk",
+    "category": "DAIRY",
+    "brand": "Nelson",
+    "description": "500mL fresh cow milk from Ontario",
+    "price": 5.99,
+    "stock": 100
+    }
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": {
+    "name": "Fresh Milk",
+    "category": "DAIRY",
+    "brand": "Nelson",
+    "description": "500mL fresh cow milk from Ontario",
+    "price": 5.99,
+    "stock": 100
+  },
+  "message": "Created"
+}
+```
+
+> or
+
+```json
+{ "data": null, "message": "Product already exists" }
+```
+
+This endpoint adds a new product to the store catalog.
+
+### HTTP Request
+
+`POST http://api.unicorn.com/product/add`
+
+### Body
+
+| Parameter   | Description                                                      |
+| ----------- | ---------------------------------------------------------------- |
+| name        | Product name.                                                    |
+| category    | Product category. Value should be in [CATEGORY](#category) list. |
+| brand       | Product brand. Value should be in [BRAND](#brand) list.          |
+| description | Product description.                                             |
+| price       | Product price in CAD.                                            |
+| stock       | Available stock of product.                                      |
+
+### Response
+
+| Parameter   | Description                                                      |
+| ----------- | ---------------------------------------------------------------- |
+| name        | Product name.                                                    |
+| category    | Product category. Value should be in [CATEGORY](#category) list. |
+| brand       | Product brand. Value should be in [BRAND](#brand) list.          |
+| description | Product description.                                             |
+| price       | Product price in CAD.                                            |
+| stock       | Available stock of product.                                      |
+
+## Get Products
+
+```shell
+curl "http://api.unicorn.com/product/getAll"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [{
+    "name": "Fresh Milk",
+    "category": "DAIRY",
+    "brand": "Nelson",
+    "description": "500mL fresh cow milk from Ontario",
+    "price": 5.99,
+    "stock": 100
+  },...],
+  "message": "OK"
+}
+```
+
+This endpoint retrieves all the products from the store catalog.
+
+### HTTP Request
+
+`POST http://api.unicorn.com/product/getAll`
+
+### Response
+
+The endpoint responds with an array of products with the following fields.
+
+| Parameter   | Description                                                      |
+| ----------- | ---------------------------------------------------------------- |
+| name        | Product name.                                                    |
+| category    | Product category. Value should be in [CATEGORY](#category) list. |
+| brand       | Product brand. Value should be in [BRAND](#brand) list.          |
+| description | Product description.                                             |
+| price       | Product price in CAD.                                            |
+| stock       | Available stock of product.                                      |
