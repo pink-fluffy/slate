@@ -334,6 +334,23 @@
               </ul>
           </li>
           <li>
+            <a href="#products" class="toc-h1 toc-link" data-title="Products">Products</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#add-product" class="toc-h2 toc-link" data-title="Add Product">Add Product</a>
+                  </li>
+                  <li>
+                    <a href="#get-products" class="toc-h2 toc-link" data-title="Get Products">Get Products</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#category" class="toc-h1 toc-link" data-title="Category">Category</a>
+          </li>
+          <li>
+            <a href="#brand" class="toc-h1 toc-link" data-title="Brand">Brand</a>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -521,8 +538,218 @@ You must replace <code>pinkfluffyunicorns</code> with your personal API key.
 </tbody></table>
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Remember — a happy unicorn is an authenticated unicorn!
 </aside>
+<h1 id='products'>Products</h1><h2 id='add-product'>Add Product</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--request</span> POST <span class="se">\</span>
+  <span class="nt">--data</span>  <span class="nv">$body</span> <span class="se">\</span>
+  <span class="s2">"http://api.unicorn.com/product/add"</span>
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="err">body</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fresh Milk"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAIRY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nelson"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500mL fresh cow milk from Ontario"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.99</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"stock"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fresh Milk"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAIRY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nelson"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500mL fresh cow milk from Ontario"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.99</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"stock"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Created"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>or</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product already exists"</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint adds a new product to the store catalog.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST http://api.unicorn.com/product/add</code></p>
+<h3 id='body-3'>Body</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Product name.</td>
+</tr>
+<tr>
+<td>category</td>
+<td>Product category. Value should be in <a href="#category">CATEGORY</a> list.</td>
+</tr>
+<tr>
+<td>brand</td>
+<td>Product brand. Value should be in <a href="#brand">BRAND</a> list.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Product description.</td>
+</tr>
+<tr>
+<td>price</td>
+<td>Product price in CAD.</td>
+</tr>
+<tr>
+<td>stock</td>
+<td>Available stock of product.</td>
+</tr>
+</tbody></table>
+<h3 id='response-3'>Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Product name.</td>
+</tr>
+<tr>
+<td>category</td>
+<td>Product category. Value should be in <a href="#category">CATEGORY</a> list.</td>
+</tr>
+<tr>
+<td>brand</td>
+<td>Product brand. Value should be in <a href="#brand">BRAND</a> list.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Product description.</td>
+</tr>
+<tr>
+<td>price</td>
+<td>Product price in CAD.</td>
+</tr>
+<tr>
+<td>stock</td>
+<td>Available stock of product.</td>
+</tr>
+</tbody></table>
+<h2 id='get-products'>Get Products</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.unicorn.com/product/getAll"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fresh Milk"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAIRY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nelson"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500mL fresh cow milk from Ontario"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.99</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"stock"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+  </span><span class="p">},</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all the products from the store catalog.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST http://api.unicorn.com/product/getAll</code></p>
+<h3 id='response-4'>Response</h3>
+<p>The endpoint responds with an array of products with the following fields.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Product name.</td>
+</tr>
+<tr>
+<td>category</td>
+<td>Product category. Value should be in <a href="#category">CATEGORY</a> list.</td>
+</tr>
+<tr>
+<td>brand</td>
+<td>Product brand. Value should be in <a href="#brand">BRAND</a> list.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Product description.</td>
+</tr>
+<tr>
+<td>price</td>
+<td>Product price in CAD.</td>
+</tr>
+<tr>
+<td>stock</td>
+<td>Available stock of product.</td>
+</tr>
+</tbody></table>
+<h1 id='category'>Category</h1>
+<p>The Unicorn API uses the following enumerations for product categories.</p>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>DAIRY</td>
+<td>Dairy</td>
+</tr>
+<tr>
+<td>POULTRY</td>
+<td>Poultry</td>
+</tr>
+<tr>
+<td>VEGETABLES</td>
+<td>Vegetables</td>
+</tr>
+<tr>
+<td>FRUITS</td>
+<td>Fruits</td>
+</tr>
+<tr>
+<td>COSMETICS</td>
+<td>Cosmetics</td>
+</tr>
+</tbody></table>
+<h1 id='brand'>Brand</h1>
+<p>The Unicorn API uses the following enumerations for product brands.</p>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>NESTLE</td>
+<td>Nestle</td>
+</tr>
+<tr>
+<td>NONAME</td>
+<td>No Name</td>
+</tr>
+<tr>
+<td>NELSON</td>
+<td>Nelson</td>
+</tr>
+<tr>
+<td>TROPICANA</td>
+<td>Tropicana</td>
+</tr>
+</tbody></table>
 <h1 id='errors'>Errors</h1>
 <p>The Unicorn API uses the following error codes:</p>
 
