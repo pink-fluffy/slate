@@ -345,6 +345,9 @@
                   <li>
                     <a href="#filter-products" class="toc-h2 toc-link" data-title="Filter Products">Filter Products</a>
                   </li>
+                  <li>
+                    <a href="#get-product" class="toc-h2 toc-link" data-title="Get Product">Get Product</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -663,7 +666,7 @@ Remember — a happy unicorn is an authenticated unicorn!
 </span></code></pre></div>
 <p>This endpoint retrieves all the products from the store catalog.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>POST http://api.unicorn.com/product/getAll</code></p>
+<p><code>GET http://api.unicorn.com/product/getAll</code></p>
 <h3 id='response-4'>Response</h3>
 <p>The endpoint responds with an array of products with the following fields.</p>
 
@@ -729,7 +732,7 @@ Remember — a happy unicorn is an authenticated unicorn!
 </span></code></pre></div>
 <p>This endpoint filters products by category and/or brand.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>POST http://api.unicorn.com/product</code></p>
+<p><code>GET http://api.unicorn.com/product</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -749,6 +752,71 @@ Remember — a happy unicorn is an authenticated unicorn!
 <h3 id='response-5'>Response</h3>
 <p>The endpoint responds with an array of products with the following fields.</p>
 
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Product name.</td>
+</tr>
+<tr>
+<td>category</td>
+<td>Product <a href="#category">category</a>.</td>
+</tr>
+<tr>
+<td>brand</td>
+<td>Product <a href="#brand">brand</a>.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Product description.</td>
+</tr>
+<tr>
+<td>price</td>
+<td>Product price in CAD.</td>
+</tr>
+<tr>
+<td>stock</td>
+<td>Available stock of product.</td>
+</tr>
+</tbody></table>
+<h2 id='get-product'>Get Product</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.unicorn.com/product/Pmkfy5"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"short_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pmkfy5"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fresh Milk"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAIRY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nelson"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500mL fresh cow milk from Ontario"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.99</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"stock"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves product by id.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET http://api.unicorn.com/{id}</code></p>
+<h3 id='path-parameters'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Product ID</td>
+</tr>
+</tbody></table>
+<h3 id='response-6'>Response</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
