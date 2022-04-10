@@ -340,7 +340,10 @@
                     <a href="#add-product" class="toc-h2 toc-link" data-title="Add Product">Add Product</a>
                   </li>
                   <li>
-                    <a href="#get-products" class="toc-h2 toc-link" data-title="Get Products">Get Products</a>
+                    <a href="#get-all-products" class="toc-h2 toc-link" data-title="Get All Products">Get All Products</a>
+                  </li>
+                  <li>
+                    <a href="#filter-products" class="toc-h2 toc-link" data-title="Filter Products">Filter Products</a>
                   </li>
               </ul>
           </li>
@@ -621,11 +624,11 @@ Remember — a happy unicorn is an authenticated unicorn!
 </tr>
 <tr>
 <td>category</td>
-<td>Product category. Value should be in <a href="#category">CATEGORY</a> list.</td>
+<td>Product <a href="#category">category</a>.</td>
 </tr>
 <tr>
 <td>brand</td>
-<td>Product brand. Value should be in <a href="#brand">BRAND</a> list.</td>
+<td>Product <a href="#brand">brand</a>.</td>
 </tr>
 <tr>
 <td>description</td>
@@ -640,13 +643,14 @@ Remember — a happy unicorn is an authenticated unicorn!
 <td>Available stock of product.</td>
 </tr>
 </tbody></table>
-<h2 id='get-products'>Get Products</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.unicorn.com/product/getAll"</span>
+<h2 id='get-all-products'>Get All Products</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.unicorn.com/product/getAll"</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nl">"short_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pmkfy5"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fresh Milk"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAIRY"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nelson"</span><span class="p">,</span><span class="w">
@@ -675,11 +679,93 @@ Remember — a happy unicorn is an authenticated unicorn!
 </tr>
 <tr>
 <td>category</td>
-<td>Product category. Value should be in <a href="#category">CATEGORY</a> list.</td>
+<td>Product <a href="#category">category</a>.</td>
 </tr>
 <tr>
 <td>brand</td>
-<td>Product brand. Value should be in <a href="#brand">BRAND</a> list.</td>
+<td>Product <a href="#brand">brand</a>.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Product description.</td>
+</tr>
+<tr>
+<td>price</td>
+<td>Product price in CAD.</td>
+</tr>
+<tr>
+<td>stock</td>
+<td>Available stock of product.</td>
+</tr>
+</tbody></table>
+<h2 id='filter-products'>Filter Products</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.unicorn.com/product?brand=Nelson&amp;category=DAIRY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"short_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pmkfy5"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fresh Milk"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAIRY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nelson"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500mL fresh cow milk from Ontario"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.99</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"stock"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"short_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UmDfz9"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Swiss Cheese"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAIRY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nelson"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500g fresh swiss cheese"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.25</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"stock"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint filters products by category and/or brand.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>POST http://api.unicorn.com/product</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>brand</td>
+<td>Brand to filter by. Value should be in <a href="#brand">BRAND</a> list.</td>
+</tr>
+<tr>
+<td>category</td>
+<td>Category to filter by. Value should be in <a href="#category">CATEGORY</a> list.</td>
+</tr>
+</tbody></table>
+<h3 id='response-5'>Response</h3>
+<p>The endpoint responds with an array of products with the following fields.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Product name.</td>
+</tr>
+<tr>
+<td>category</td>
+<td>Product <a href="#category">category</a>.</td>
+</tr>
+<tr>
+<td>brand</td>
+<td>Product <a href="#brand">brand</a>.</td>
 </tr>
 <tr>
 <td>description</td>
@@ -699,28 +785,22 @@ Remember — a happy unicorn is an authenticated unicorn!
 
 <table><thead>
 <tr>
-<th>Key</th>
-<th>Value</th>
+<th></th>
 </tr>
 </thead><tbody>
 <tr>
-<td>DAIRY</td>
 <td>Dairy</td>
 </tr>
 <tr>
-<td>POULTRY</td>
 <td>Poultry</td>
 </tr>
 <tr>
-<td>VEGETABLES</td>
 <td>Vegetables</td>
 </tr>
 <tr>
-<td>FRUITS</td>
 <td>Fruits</td>
 </tr>
 <tr>
-<td>COSMETICS</td>
 <td>Cosmetics</td>
 </tr>
 </tbody></table>
@@ -729,24 +809,19 @@ Remember — a happy unicorn is an authenticated unicorn!
 
 <table><thead>
 <tr>
-<th>Key</th>
-<th>Value</th>
+<th></th>
 </tr>
 </thead><tbody>
 <tr>
-<td>NESTLE</td>
 <td>Nestle</td>
 </tr>
 <tr>
-<td>NONAME</td>
 <td>No Name</td>
 </tr>
 <tr>
-<td>NELSON</td>
 <td>Nelson</td>
 </tr>
 <tr>
-<td>TROPICANA</td>
 <td>Tropicana</td>
 </tr>
 </tbody></table>
