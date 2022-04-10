@@ -248,16 +248,16 @@ This endpoint adds a new product to the store catalog.
 
 ### Response
 
-| Parameter   | Description                                                      |
-| ----------- | ---------------------------------------------------------------- |
-| name        | Product name.                                                    |
-| category    | Product category. Value should be in [CATEGORY](#category) list. |
-| brand       | Product brand. Value should be in [BRAND](#brand) list.          |
-| description | Product description.                                             |
-| price       | Product price in CAD.                                            |
-| stock       | Available stock of product.                                      |
+| Parameter   | Description                    |
+| ----------- | ------------------------------ |
+| name        | Product name.                  |
+| category    | Product [category](#category). |
+| brand       | Product [brand](#brand).       |
+| description | Product description.           |
+| price       | Product price in CAD.          |
+| stock       | Available stock of product.    |
 
-## Get Products
+## Get All Products
 
 ```shell
 curl "http://api.unicorn.com/product/getAll"
@@ -268,6 +268,7 @@ curl "http://api.unicorn.com/product/getAll"
 ```json
 {
   "data": [{
+    "short_id": "Pmkfy5",
     "name": "Fresh Milk",
     "category": "DAIRY",
     "brand": "Nelson",
@@ -289,11 +290,71 @@ This endpoint retrieves all the products from the store catalog.
 
 The endpoint responds with an array of products with the following fields.
 
-| Parameter   | Description                                                      |
-| ----------- | ---------------------------------------------------------------- |
-| name        | Product name.                                                    |
-| category    | Product category. Value should be in [CATEGORY](#category) list. |
-| brand       | Product brand. Value should be in [BRAND](#brand) list.          |
-| description | Product description.                                             |
-| price       | Product price in CAD.                                            |
-| stock       | Available stock of product.                                      |
+| Parameter   | Description                    |
+| ----------- | ------------------------------ |
+| name        | Product name.                  |
+| category    | Product [category](#category). |
+| brand       | Product [brand](#brand).       |
+| description | Product description.           |
+| price       | Product price in CAD.          |
+| stock       | Available stock of product.    |
+
+## Filter Products
+
+```shell
+curl "http://api.unicorn.com/product?brand=Nelson&category=DAIRY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [
+    {
+      "short_id": "Pmkfy5",
+      "name": "Fresh Milk",
+      "category": "DAIRY",
+      "brand": "Nelson",
+      "description": "500mL fresh cow milk from Ontario",
+      "price": 5.99,
+      "stock": 100
+    },
+    {
+      "short_id": "UmDfz9",
+      "name": "Swiss Cheese",
+      "category": "DAIRY",
+      "brand": "Nelson",
+      "description": "500g fresh swiss cheese",
+      "price": 7.25,
+      "stock": 120
+    }
+  ],
+  "message": "OK"
+}
+```
+
+This endpoint filters products by category and/or brand.
+
+### HTTP Request
+
+`POST http://api.unicorn.com/product`
+
+### Query Parameters
+
+| Parameter | Description                                                           |
+| --------- | --------------------------------------------------------------------- |
+| brand     | Brand to filter by. Value should be in [BRAND](#brand) list.          |
+| category  | Category to filter by. Value should be in [CATEGORY](#category) list. |
+
+### Response
+
+The endpoint responds with an array of products with the following fields.
+
+| Parameter   | Description                    |
+| ----------- | ------------------------------ |
+| name        | Product name.                  |
+| category    | Product [category](#category). |
+| brand       | Product [brand](#brand).       |
+| description | Product description.           |
+| price       | Product price in CAD.          |
+| stock       | Available stock of product.    |
