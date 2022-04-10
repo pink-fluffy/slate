@@ -284,7 +284,7 @@ This endpoint retrieves all the products from the store catalog.
 
 ### HTTP Request
 
-`POST http://api.unicorn.com/product/getAll`
+`GET http://api.unicorn.com/product/getAll`
 
 ### Response
 
@@ -337,7 +337,7 @@ This endpoint filters products by category and/or brand.
 
 ### HTTP Request
 
-`POST http://api.unicorn.com/product`
+`GET http://api.unicorn.com/product`
 
 ### Query Parameters
 
@@ -349,6 +349,52 @@ This endpoint filters products by category and/or brand.
 ### Response
 
 The endpoint responds with an array of products with the following fields.
+
+| Parameter   | Description                    |
+| ----------- | ------------------------------ |
+| name        | Product name.                  |
+| category    | Product [category](#category). |
+| brand       | Product [brand](#brand).       |
+| description | Product description.           |
+| price       | Product price in CAD.          |
+| stock       | Available stock of product.    |
+
+## Get Product
+
+```shell
+curl "http://api.unicorn.com/product/Pmkfy5"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": {
+    "short_id": "Pmkfy5",
+    "name": "Fresh Milk",
+    "category": "DAIRY",
+    "brand": "Nelson",
+    "description": "500mL fresh cow milk from Ontario",
+    "price": 5.99,
+    "stock": 100
+  },
+  "message": "OK"
+}
+```
+
+This endpoint retrieves product by id.
+
+### HTTP Request
+
+`GET http://api.unicorn.com/{id}`
+
+### Path Parameters
+
+| Parameter | Description |
+| --------- | ----------- |
+| id        | Product ID  |
+
+### Response
 
 | Parameter   | Description                    |
 | ----------- | ------------------------------ |
