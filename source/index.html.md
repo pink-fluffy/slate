@@ -24,7 +24,7 @@ meta:
 
 # Introduction
 
-Welcome to the Unicorn API! You can use our API to access Unicorn API endpoints, which can get information on the e-commerce store.
+Welcome to the Unicorn API! You can use our API to access Unicorn API endpoints at `https://api.shopunicorn.live`, which can get information on the e-commerce store.
 
 # Response Format
 
@@ -49,8 +49,8 @@ The [error code reference](#errors) explains the message for each error code.
 
 ```shell
 # With shell, you can just pass the correct header with each request
-curl "api_endpoint" \
-  --header "Authorization: Bearer meowmeowmeow"
+curl "https://api.shopunicorn.live/<route>" \
+  --header "Authorization: Bearer pinkfluffyunicorns"
 ```
 
 > Make sure to replace `pinkfluffyunicorns` with your API key.
@@ -71,7 +71,7 @@ You must replace <code>pinkfluffyunicorns</code> with your personal API key.
 curl --header "Content-Type: application/json" \
   --request POST \
   --data  $body \
-  "http://api.unicorn.com/user/register"
+  "https://api.shopunicorn.live/user/register"
 ```
 
 ```json
@@ -107,7 +107,7 @@ This endpoint registers a new user.
 
 ### HTTP Request
 
-`POST http://api.unicorn.com/user/register`
+`POST https://api.shopunicorn.live/user/register`
 
 ### Body
 
@@ -133,7 +133,7 @@ This endpoint registers a new user.
 curl --header "Content-Type: application/json" \
   --request POST \
   --data  $body \
-  "http://api.unicorn.com/user/login"
+  "https://api.shopunicorn.live/user/login"
 ```
 
 ```json
@@ -165,7 +165,7 @@ This endpoint verifies the entered credentials and issues an access token to aut
 
 ### HTTP Request
 
-`POST http://api.unicorn.com/user/login`
+`POST https://api.shopunicorn.live/user/login`
 
 ### Body
 
@@ -193,7 +193,7 @@ Remember — a happy unicorn is an authenticated unicorn!
 curl --header "Content-Type: application/json" \
   --request POST \
   --data  $body \
-  "http://api.unicorn.com/product/add"
+  "https://api.shopunicorn.live/product/add"
 ```
 
 ```json
@@ -233,7 +233,7 @@ This endpoint adds a new product to the store catalog.
 
 ### HTTP Request
 
-`POST http://api.unicorn.com/product/add`
+`POST https://api.shopunicorn.live/product/add`
 
 ### Body
 
@@ -260,7 +260,7 @@ This endpoint adds a new product to the store catalog.
 ## Get All Products
 
 ```shell
-curl "http://api.unicorn.com/product/getAll"
+curl "https://api.shopunicorn.live/product/getAll"
 ```
 
 > The above command returns JSON structured like this:
@@ -284,7 +284,7 @@ This endpoint retrieves all the products from the store catalog.
 
 ### HTTP Request
 
-`GET http://api.unicorn.com/product/getAll`
+`GET https://api.shopunicorn.live/product/getAll`
 
 ### Response
 
@@ -302,7 +302,7 @@ The endpoint responds with an array of products with the following fields.
 ## Filter Products
 
 ```shell
-curl "http://api.unicorn.com/product?brand=Nelson&category=DAIRY"
+curl "https://api.shopunicorn.live/product?brand=Nelson&category=DAIRY"
 ```
 
 > The above command returns JSON structured like this:
@@ -337,7 +337,7 @@ This endpoint filters products by category and/or brand.
 
 ### HTTP Request
 
-`GET http://api.unicorn.com/product`
+`GET https://api.shopunicorn.live/product`
 
 ### Query Parameters
 
@@ -362,7 +362,7 @@ The endpoint responds with an array of products with the following fields.
 ## Get Product
 
 ```shell
-curl "http://api.unicorn.com/product/Pmkfy5"
+curl "https://api.shopunicorn.live/product/Pmkfy5"
 ```
 
 > The above command returns JSON structured like this:
@@ -386,7 +386,7 @@ This endpoint retrieves product by id.
 
 ### HTTP Request
 
-`GET http://api.unicorn.com/{id}`
+`GET https://api.shopunicorn.live/{id}`
 
 ### Path Parameters
 
