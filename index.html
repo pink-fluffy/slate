@@ -368,7 +368,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Unicorn API! You can use our API to access Unicorn API endpoints, which can get information on the e-commerce store.</p>
+<p>Welcome to the Unicorn API! You can use our API to access Unicorn API endpoints at <code>https://api.shopunicorn.live</code>, which can get information on the e-commerce store.</p>
 <h1 id='response-format'>Response Format</h1>
 <p>The <code>data</code> field can return a single JSON object or an array of JSON objects.</p>
 
@@ -388,8 +388,8 @@
 <p>To authorize, use this code:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint"</span> <span class="se">\</span>
-  <span class="nt">--header</span> <span class="s2">"Authorization: Bearer meowmeowmeow"</span>
+curl <span class="s2">"https://api.shopunicorn.live/&lt;route&gt;"</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s2">"Authorization: Bearer pinkfluffyunicorns"</span>
 </code></pre></div>
 <blockquote>
 <p>Make sure to replace <code>pinkfluffyunicorns</code> with your API key.</p>
@@ -405,7 +405,7 @@ You must replace <code>pinkfluffyunicorns</code> with your personal API key.
 <h1 id='identity'>Identity</h1><h2 id='register-user'>Register User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">--request</span> POST <span class="se">\</span>
   <span class="nt">--data</span>  <span class="nv">$body</span> <span class="se">\</span>
-  <span class="s2">"http://api.unicorn.com/user/register"</span>
+  <span class="s2">"https://api.shopunicorn.live/user/register"</span>
 </code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="err">body</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"first_name"</span><span class="p">:</span><span class="s2">"Sergio"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verstappen"</span><span class="p">,</span><span class="w">
@@ -433,7 +433,7 @@ You must replace <code>pinkfluffyunicorns</code> with your personal API key.
 </span></code></pre></div>
 <p>This endpoint registers a new user.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST http://api.unicorn.com/user/register</code></p>
+<p><code>POST https://api.shopunicorn.live/user/register</code></p>
 <h3 id='body'>Body</h3>
 <table><thead>
 <tr>
@@ -485,7 +485,7 @@ You must replace <code>pinkfluffyunicorns</code> with your personal API key.
 <h2 id='login-user'>Login User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">--request</span> POST <span class="se">\</span>
   <span class="nt">--data</span>  <span class="nv">$body</span> <span class="se">\</span>
-  <span class="s2">"http://api.unicorn.com/user/login"</span>
+  <span class="s2">"https://api.shopunicorn.live/user/login"</span>
 </code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="err">body</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"per@ver.rb"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"password"</span><span class="p">:</span><span class="s2">"pinkfluffypassword"</span><span class="w">
@@ -509,7 +509,7 @@ You must replace <code>pinkfluffyunicorns</code> with your personal API key.
 </span></code></pre></div>
 <p>This endpoint verifies the entered credentials and issues an access token to authenticated users.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST http://api.unicorn.com/user/login</code></p>
+<p><code>POST https://api.shopunicorn.live/user/login</code></p>
 <h3 id='body-2'>Body</h3>
 <table><thead>
 <tr>
@@ -549,7 +549,7 @@ Remember — a happy unicorn is an authenticated unicorn!
 <h1 id='products'>Products</h1><h2 id='add-product'>Add Product</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">--request</span> POST <span class="se">\</span>
   <span class="nt">--data</span>  <span class="nv">$body</span> <span class="se">\</span>
-  <span class="s2">"http://api.unicorn.com/product/add"</span>
+  <span class="s2">"https://api.shopunicorn.live/product/add"</span>
 </code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="err">body</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fresh Milk"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAIRY"</span><span class="p">,</span><span class="w">
@@ -581,7 +581,7 @@ Remember — a happy unicorn is an authenticated unicorn!
 </span></code></pre></div>
 <p>This endpoint adds a new product to the store catalog.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>POST http://api.unicorn.com/product/add</code></p>
+<p><code>POST https://api.shopunicorn.live/product/add</code></p>
 <h3 id='body-3'>Body</h3>
 <table><thead>
 <tr>
@@ -646,7 +646,7 @@ Remember — a happy unicorn is an authenticated unicorn!
 <td>Available stock of product.</td>
 </tr>
 </tbody></table>
-<h2 id='get-all-products'>Get All Products</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.unicorn.com/product/getAll"</span>
+<h2 id='get-all-products'>Get All Products</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.shopunicorn.live/product/getAll"</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -666,7 +666,7 @@ Remember — a happy unicorn is an authenticated unicorn!
 </span></code></pre></div>
 <p>This endpoint retrieves all the products from the store catalog.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET http://api.unicorn.com/product/getAll</code></p>
+<p><code>GET https://api.shopunicorn.live/product/getAll</code></p>
 <h3 id='response-4'>Response</h3>
 <p>The endpoint responds with an array of products with the following fields.</p>
 
@@ -701,7 +701,7 @@ Remember — a happy unicorn is an authenticated unicorn!
 <td>Available stock of product.</td>
 </tr>
 </tbody></table>
-<h2 id='filter-products'>Filter Products</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.unicorn.com/product?brand=Nelson&amp;category=DAIRY"</span>
+<h2 id='filter-products'>Filter Products</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.shopunicorn.live/product?brand=Nelson&amp;category=DAIRY"</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -732,7 +732,7 @@ Remember — a happy unicorn is an authenticated unicorn!
 </span></code></pre></div>
 <p>This endpoint filters products by category and/or brand.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET http://api.unicorn.com/product</code></p>
+<p><code>GET https://api.shopunicorn.live/product</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -783,7 +783,7 @@ Remember — a happy unicorn is an authenticated unicorn!
 <td>Available stock of product.</td>
 </tr>
 </tbody></table>
-<h2 id='get-product'>Get Product</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://api.unicorn.com/product/Pmkfy5"</span>
+<h2 id='get-product'>Get Product</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.shopunicorn.live/product/Pmkfy5"</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -803,7 +803,7 @@ Remember — a happy unicorn is an authenticated unicorn!
 </span></code></pre></div>
 <p>This endpoint retrieves product by id.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><code>GET http://api.unicorn.com/{id}</code></p>
+<p><code>GET https://api.shopunicorn.live/{id}</code></p>
 <h3 id='path-parameters'>Path Parameters</h3>
 <table><thead>
 <tr>
