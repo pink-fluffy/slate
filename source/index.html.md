@@ -88,6 +88,7 @@ curl --header "Content-Type: application/json" \
 ```json
 {
   "data": {
+    "id": "12345"
     "name": "Sergio Verstappen",
     "email": "per@ver.rb",
     "accessToken": "eyJ1c2VySWQiOiI2MjQ1NDE4NDliOTM1ODI1NDNjZjNkYjMiLCJl",
@@ -122,6 +123,7 @@ This endpoint registers a new user.
 
 | Parameter    | Description                              |
 | ------------ | ---------------------------------------- |
+| id           | User ID                                  |
 | name         | User's full name.                        |
 | email        | User's registered email.                 |
 | accessToken  | Authentication token for registerd user. |
@@ -148,6 +150,7 @@ curl --header "Content-Type: application/json" \
 ```json
 {
   "data": {
+    "id": "12345",
     "accessToken": "eyJ1c2VySWQiOiI2MjQ1NDE4NDliOTM1ODI1NDNjZjNkYjMiLCJl",
     "refreshToken": null
   },
@@ -178,6 +181,7 @@ This endpoint verifies the entered credentials and issues an access token to aut
 
 | Parameter    | Description                              |
 | ------------ | ---------------------------------------- |
+| id           | User ID                                  |
 | accessToken  | Authentication token for registerd user. |
 | refreshToken | `null`                                   |
 
@@ -202,8 +206,14 @@ curl --header "Content-Type: application/json" \
     "category": "DAIRY",
     "brand": "Nelson",
     "description": "500mL fresh cow milk from Ontario",
+    "image": "https://shopunicorn.live/myimage",
     "price": 5.99,
-    "stock": 100
+    "stock": 100,
+    "reviews": [{
+      "userId": "12345",
+      "rating": 5,
+      "text": "Nice product."
+    }...]
     }
 ```
 
@@ -216,8 +226,16 @@ curl --header "Content-Type: application/json" \
     "category": "DAIRY",
     "brand": "Nelson",
     "description": "500mL fresh cow milk from Ontario",
+    "image": "https://shopunicorn.live/myimage",
     "price": 5.99,
-    "stock": 100
+    "stock": 100,
+    "reviews": [
+      {
+        "userId": "12345",
+        "rating": 5,
+        "text": "Nice product."
+      ...}
+    ]
   },
   "message": "Created"
 }
@@ -243,6 +261,7 @@ This endpoint adds a new product to the store catalog.
 | category    | Product category. Value should be in [CATEGORY](#category) list. |
 | brand       | Product brand. Value should be in [BRAND](#brand) list.          |
 | description | Product description.                                             |
+| image       | Product image URL                                                |
 | price       | Product price in CAD.                                            |
 | stock       | Available stock of product.                                      |
 
@@ -254,6 +273,8 @@ This endpoint adds a new product to the store catalog.
 | category    | Product [category](#category). |
 | brand       | Product [brand](#brand).       |
 | description | Product description.           |
+| reviews     | Product reviews array          |
+| image       | Product image URL              |
 | price       | Product price in CAD.          |
 | stock       | Available stock of product.    |
 
@@ -273,8 +294,14 @@ curl "https://api.shopunicorn.live/product/getAll"
     "category": "DAIRY",
     "brand": "Nelson",
     "description": "500mL fresh cow milk from Ontario",
+    "image": "https://shopunicorn.live/myimage",
     "price": 5.99,
-    "stock": 100
+    "stock": 100,
+    "reviews": [{
+      "userId": "12345",
+      "rating": 5,
+      "text": "Nice product."
+    }...]
   },...],
   "message": "OK"
 }
@@ -296,6 +323,8 @@ The endpoint responds with an array of products with the following fields.
 | category    | Product [category](#category). |
 | brand       | Product [brand](#brand).       |
 | description | Product description.           |
+| reviews     | Product reviews array.         |
+| image       | Product image URL              |
 | price       | Product price in CAD.          |
 | stock       | Available stock of product.    |
 
@@ -316,8 +345,14 @@ curl "https://api.shopunicorn.live/product?brand=Nelson&category=DAIRY"
       "category": "DAIRY",
       "brand": "Nelson",
       "description": "500mL fresh cow milk from Ontario",
+      "image": "https://shopunicorn.live/myimage",
       "price": 5.99,
-      "stock": 100
+      "stock": 100,
+      "reviews": [{
+        "userId": "12345",
+        "rating": 5,
+        "text": "Nice product."
+      }...]
     },
     {
       "short_id": "UmDfz9",
@@ -325,8 +360,14 @@ curl "https://api.shopunicorn.live/product?brand=Nelson&category=DAIRY"
       "category": "DAIRY",
       "brand": "Nelson",
       "description": "500g fresh swiss cheese",
+      "image": "https://shopunicorn.live/myimage",
       "price": 7.25,
-      "stock": 120
+      "stock": 120,
+      "reviews": [{
+        "userId": "12345",
+        "rating": 5,
+        "text": "Nice product."
+      }...]
     }
   ],
   "message": "OK"
@@ -356,6 +397,8 @@ The endpoint responds with an array of products with the following fields.
 | category    | Product [category](#category). |
 | brand       | Product [brand](#brand).       |
 | description | Product description.           |
+| reviews     | Product reviews array          |
+| image       | Product image URL              |
 | price       | Product price in CAD.          |
 | stock       | Available stock of product.    |
 
@@ -375,8 +418,15 @@ curl "https://api.shopunicorn.live/product/Pmkfy5"
     "category": "DAIRY",
     "brand": "Nelson",
     "description": "500mL fresh cow milk from Ontario",
+    "image": "https://shopunicorn.live/myimage",
     "price": 5.99,
-    "stock": 100
+    "stock": 100,
+    "reviews": [
+      {
+        "userId": "12345",
+        "rating": 5,
+        "text": "Nice product."
+      }...]
   },
   "message": "OK"
 }
@@ -402,5 +452,87 @@ This endpoint retrieves product by id.
 | category    | Product [category](#category). |
 | brand       | Product [brand](#brand).       |
 | description | Product description.           |
+| reviews     | Product reviews array          |
+| image       | Product image URL              |
+| price       | Product price in CAD.          |
+| stock       | Available stock of product.    |
+
+## Add Product Review
+
+```shell
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data  $body \
+  "https://api.shopunicorn.live/product/{id}/addReview"
+```
+
+```json
+  body = {
+      "userId": "12345",
+      "rating": 5,
+      "text": "Nice product."
+    }
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": {
+    "name": "Fresh Milk",
+    "category": "DAIRY",
+    "brand": "Nelson",
+    "description": "500mL fresh cow milk from Ontario",
+    "image": "https://shopunicorn.live/myimage",
+    "price": 5.99,
+    "stock": 100,
+    "reviews": [
+      {
+        "userId": "12345",
+        "rating": 5,
+        "text": "Nice product."
+      ...}
+    ]
+  },
+  "message": "Created"
+}
+```
+
+> or
+
+```json
+{ "data": null, "message": "Product already exists" }
+```
+
+This endpoint adds a review to a product.
+
+### HTTP Request
+
+`POST https://api.shopunicorn.live/product/{id}/addReview`
+
+### Path Parameters
+
+| Parameter | Description |
+| --------- | ----------- |
+| id        | Product ID  |
+
+### Body
+
+| Parameter | Description                   |
+| --------- | ----------------------------- |
+| userId    | User ID of the review author. |
+| rating    | Rating between 1 - 5.         |
+| text      | Review text.                  |
+
+### Response
+
+| Parameter   | Description                    |
+| ----------- | ------------------------------ |
+| name        | Product name.                  |
+| category    | Product [category](#category). |
+| brand       | Product [brand](#brand).       |
+| description | Product description.           |
+| reviews     | Product reviews array          |
+| image       | Product image URL              |
 | price       | Product price in CAD.          |
 | stock       | Available stock of product.    |
