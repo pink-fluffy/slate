@@ -151,6 +151,7 @@ curl --header "Content-Type: application/json" \
 {
   "data": {
     "id": "12345",
+    "name": "Sergio Verstappen",
     "accessToken": "eyJ1c2VySWQiOiI2MjQ1NDE4NDliOTM1ODI1NDNjZjNkYjMiLCJl",
     "refreshToken": null
   },
@@ -182,6 +183,7 @@ This endpoint verifies the entered credentials and issues an access token to aut
 | Parameter    | Description                              |
 | ------------ | ---------------------------------------- |
 | id           | User ID                                  |
+| name         | User's full name.                        |
 | accessToken  | Authentication token for registerd user. |
 | refreshToken | `null`                                   |
 
